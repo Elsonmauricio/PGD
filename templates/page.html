@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Container principal que ocupará toda a altura da página -->
+<div class="page-container">
+    <!-- Barra de navegação superior -->
+    <nav class="nav-links">
+        {% if form %}
+            <a href="#form-section" class="nav-link">{{ title }}</a>
+        {% endif %}
+        {% if items %}
+            <a href="#list-section" class="nav-link">Lista</a>
+        {% endif %}
+    </nav>
+
+    <!-- Container principal do conteúdo -->
+    <main class="main-content">
+        <!-- Seção do formulário -->
+        {% if form %}
+            <div id="form-section" class="content-section">
+                <h2>{{ title }}</h2>
+                <form method="POST" class="form-container">
+                    {% for field in form.fields %}
+                    <div class="form-group">
+                        <label for="{{ field.id }}">{{ field.label }}:</label>
+                        <input 
+                            type="{{ field.type }}" 
+                            name="{{ field.name }}" 
+                            id="{{ field.id }}" 
+                            required
+                        >
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="submit-button">
+                        {{ form.button_text }}
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+
+        <!-- Seção da lista -->
+        {% if items %}
+            <div id="list-section" class="content-section">
+                <h2>Lista</h2>
+                <ul class="items-list">
+                    {% for item in items %}
+                    <li class="list-item">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Mensagem de feedback -->
+        {% if message %}
+            <div class="message">
+                <p>{{ message }}</p>
+            </div>
+        {% endif %}
+    </main>
+
+    <!-- Rodapé com link de voltar -->
+    <footer class="page-footer">
+        <a href="/" class="back-link">Voltar</a>
+    </footer>
+</div>
+{% endblock %}

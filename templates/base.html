@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PGD - Plataforma{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>PGD</h1>
+        <nav>
+            <ul>
+                <li><a href="/cadastrar_desempregado">Cadastrar Desempregado</a></li>
+                <li><a href="/cadastrar_empresa">Cadastrar Empresa</a></li>
+                <li><a href="/listar_desempregados">Desempregados</a></li>
+                <li><a href="/listar_empresas">Empresas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
