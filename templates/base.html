@@ -8,18 +8,20 @@
 </head>
 <body>
     <header>
-        <h1>PGD</h1>
-        <nav>
-            <ul>
-                <li><a href="/cadastrar_desempregado">Cadastrar Desempregado</a></li>
-                <li><a href="/cadastrar_empresa">Cadastrar Empresa</a></li>
-                <li><a href="/listar_desempregados">Desempregados</a></li>
-                <li><a href="/listar_empresas">Empresas</a></li>
-            </ul>
+        <nav class="top-nav">
+            <div class="nav-container">
+
+                <a href="/cadastrar_desempregado" class="nav-item">Cadastrar Desempregado</a>
+                <a href="/cadastrar_empresa" class="nav-item">Cadastrar Empresa</a>
+                <a href="/listar_desempregados" class="nav-item">Desempregados</a>
+                <a href="/listar_empresas" class="nav-item">Empresas</a>
+                <a href="login" class="nav-item">login</a>
         </nav>
     </header>
+    
     <main>
-        {% block content %}{% endblock %}
+        {% block content %} 
+        {% endblock %}
     </main>
     <footer>
         <p>&copy; 2024 PGD - Todos os direitos reservados.</p>

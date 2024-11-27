@@ -21,6 +21,44 @@ body {
     min-height: 100vh;
     width: 100%;
 }
+/* Barra de navegação superior */
+.top-nav {
+    width: 100%;                /* Ocupa toda a largura */
+    background-color: #0066cc;  /* Fundo azul */
+    position: fixed;           /* Fixa a barra no topo */
+    top: 0;                    /* Alinha ao topo da página */
+    z-index: 1000;            /* Garante que fique sobre outros elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+}
+/* Container dos links - centraliza o conteúdo */
+.nav-container {
+    max-width: 1200px;        /* Largura máxima do conteúdo */
+    margin: 0 auto;           /* Centraliza horizontalmente */
+    display: flex;            /* Ativa flexbox */
+    justify-content: center;  /* Centraliza os itens */
+    gap: 20px;               /* Espaço entre os links */
+    padding: 15px;           /* Espaçamento interno */
+}
+
+/* Estilo dos links */
+.nav-item {
+    color: white;            /* Texto branco */
+    text-decoration: none;   /* Remove sublinhado */
+    padding: 10px 20px;      /* Espaçamento interno */
+    border-radius: 5px;      /* Bordas arredondadas */
+    transition: all 0.3s;    /* Transição suave */
+}
+
+/* Efeito hover nos links */
+.nav-item:hover {
+    background-color: #004999; /* Azul mais escuro no hover */
+}
+
+/* Ajuste para o conteúdo principal não ficar sob a navbar */
+.page-container {
+    margin-top: 70px;        /* Espaço para a navbar fixa */
+}
+
 
 /* Estilo dos links de navegação */
 .nav-link {
@@ -166,5 +204,37 @@ input {
     background-color: #e8f5e9;
     color: #2e7d32;
     text-align: center;
+}
+
+.form-container, .list-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
 }
 
