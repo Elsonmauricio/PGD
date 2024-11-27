@@ -6,10 +6,28 @@ app = Flask(__name__)
 desempregados = []
 empresas = []
 
+# Rota para a página inicial
 @app.route('/')
 def index():
     return render_template('page.html', title="Página Inicial", message="Bem-vindo ao PGD!")
 
+# Rota para a página de login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        # Lógica de validação do login (pode ser implementada conforme necessário)
+        # Se o login for bem-sucedido, você pode redirecionar o usuário para outra página
+        # Exemplo: return redirect(url_for('index'))
+        
+        return redirect(url_for('index'))  # Redirecionando para a página inicial após o login
+
+    # Se o método for GET (ou seja, a página é acessada inicialmente), renderize o HTML do login
+    return render_template('login.html', title="Login")
+
+# Função de cadastro de desempregado (não alterada)
 @app.route('/cadastrar_desempregado', methods=['GET', 'POST'])
 def cadastrar_desempregado():
     if request.method == 'POST':
@@ -26,6 +44,7 @@ def cadastrar_desempregado():
     }
     return render_template('page.html', title="Cadastrar Desempregado", form=form)
 
+# Função de cadastro de empresa (não alterada)
 @app.route('/cadastrar_empresa', methods=['GET', 'POST'])
 def cadastrar_empresa():
     if request.method == 'POST':
@@ -41,16 +60,6 @@ def cadastrar_empresa():
         'button_text': 'Cadastrar'
     }
     return render_template('page.html', title="Cadastrar Empresa", form=form)
-
-@app.route('/listar_desempregados')
-def listar_desempregados():
-    items = [f"{d['nome']} - Habilidades: {', '.join(d['habilidades'])}" for d in desempregados]
-    return render_template('page.html', title="Lista de Desempregados", items=items)
-
-@app.route('/listar_empresas')
-def listar_empresas():
-    items = [f"{e['nome']} - Vagas: {e['vagas']}" for e in empresas]
-    return render_template('page.html', title="Lista de Empresas", items=items)
 
 if __name__ == '__main__':
     app.run(debug=True)
