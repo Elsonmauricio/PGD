@@ -42,7 +42,7 @@ body {
 
 /* Estilo dos links */
 .nav-item {
-    color: white;            /* Texto branco */
+    color: rgb(255, 255, 255);            /* Texto branco */
     text-decoration: none;   /* Remove sublinhado */
     padding: 10px 20px;      /* Espaçamento interno */
     border-radius: 5px;      /* Bordas arredondadas */
@@ -236,5 +236,206 @@ ul {
 li {
     padding: 10px;
     border-bottom: 1px solid #eee;
+}
+
+.candidate-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.candidate-details {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+
+.candidate-actions {
+    margin-top: 10px;
+}
+
+.contact-btn, .edit-btn, .view-profile-btn {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+.contact-btn:hover, .edit-btn:hover, .view-profile-btn:hover {
+    background-color: #0056b3;
+}
+
+.jobs-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.search-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.search-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+.candidate-item {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.candidate-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+
+.view-details-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.view-details-btn:hover {
+    background-color: #218838;
+}
+
+/* Estilos gerais */
+.content-section {
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Área da Empresa */
+.candidates-list {
+    list-style: none;
+    padding: 0;
+}
+
+.candidate-item {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.candidate-details {
+    margin: 10px 0;
+}
+
+.candidate-actions {
+    margin-top: 10px;
+}
+
+/* Área do Desempregado */
+.companies-list {
+    list-style: none;
+    padding: 0;
+}
+
+.company-item {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Botões */
+.search-btn, .contact-btn, .view-cv-btn, .apply-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.search-btn:hover, .contact-btn:hover, .view-cv-btn:hover, .apply-button:hover {
+    background-color: #0056b3;
+}
+
+/* Formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Mensagens */
+.message {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #e3f2fd;
+    border-radius: 4px;
+    border-left: 4px solid #2196f3;
+}
+
+.already-applied {
+    color: #666;
+    font-style: italic;
+}
+
+/* Seções */
+.search-section, .applications-section, .jobs-section {
+    margin-bottom: 30px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content-section {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .form-group input, .form-group textarea {
+        width: 100%;
+    }
 }
 

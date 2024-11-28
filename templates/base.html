@@ -11,20 +11,19 @@
         <nav class="top-nav">
             <div class="nav-container">
 
-                <a href="/cadastrar_desempregado" class="nav-item">Cadastrar Desempregado</a>
-                <a href="/cadastrar_empresa" class="nav-item">Cadastrar Empresa</a>
-                <a href="/listar_desempregados" class="nav-item">Desempregados</a>
-                <a href="/listar_empresas" class="nav-item">Empresas</a>
+                <a href="/cadastrar_desempregado#form-section" class="nav-item">Cadastrar Desempregado</a>
+                <a href="/cadastrar_empresa#form-section" class="nav-item">Cadastrar Empresa</a>
+                <!-- <a href="/listar_desempregados#list-section" class="nav-item">Desempregados</a>
+                <a href="/listar_empresas#list-section" class="nav-item">Empresas</a> -->
                 <a href="login" class="nav-item">login</a>
         </nav>
     </header>
     
     <main>
-        {% block content %} 
-        {% endblock %}
+        {% block content %} {% endblock %}
     </main>
     <footer>
-        <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
+        <div class="nav-container"><p>&copy; 2024 PGD - Todos os direitos reservados.</p></div>
     </footer>
 </body>
 </html>
