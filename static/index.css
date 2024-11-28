@@ -1,0 +1,73 @@
+/* index.css */
+
+/* Barra azul e alinhamento */
+.top-nav {
+  display: flex;
+  justify-content: space-between; /* Distribui os itens de forma que a imagem fique à esquerda e a navegação à direita */
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  background-color: #0078d4; /* Azul moderno */
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  width: 100%; /* A barra de navegação ocupa toda a largura */
+}
+
+/* Logo no canto esquerdo */
+.logo-link {
+  display: flex;
+  align-items: center; /* Centraliza a imagem verticalmente */
+}
+
+.logo {
+  width: 60px; /* Aumenta o tamanho da imagem */
+  height: auto;
+}
+
+/* Contêiner para os botões de navegação centralizados */
+.nav-links-container {
+  flex-grow: 1; /* Faz o contêiner crescer para ocupar o espaço disponível */
+  display: flex;
+  justify-content: center; /* Centraliza os links de navegação */
+}
+
+/* Links de navegação */
+.nav-links {
+  display: flex;
+  gap: 15px; /* Mantém o espaçamento entre os links */
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: #055dab; /* Tom mais escuro de azul */
+  border-radius: 4px; /* Cantos arredondados */
+  transform: scale(1.05); /* Leve aumento */
+}
+
+.nav-item:active {
+  background-color: #005fb3; /* Tom ainda mais escuro */
+  transform: scale(1); /* Retorno ao normal */
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column; /* Coloca os itens da navegação verticalmente */
+    align-items: center;
+  }
+
+  .nav-item {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
