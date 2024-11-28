@@ -16,10 +16,9 @@
             </div>
         </nav>
     </header>
-
     <div class="page-container">
         <main class="main-content">
-            <h1>{{ title }}</h1>
+            <h1>Candidato</h1>
             <form method="POST" class="form-container">
                 {% for field in form.fields %}
                 <div class="form-group">
@@ -34,12 +33,6 @@
                 <button type="submit" class="submit-button">{{ form.button_text }}</button>
             </form>
         </main>
-        
-        <footer class="page-footer">
-            <div class="nav-container">
-                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
-            </div>
-        </footer>
     </div>
 </body>
 </html> 
