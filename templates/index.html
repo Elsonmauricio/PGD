@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <header>
         <nav class="top-nav">
           <div class="nav-container">
             <!-- Imagem do logotipo no canto esquerdo -->
@@ -25,7 +30,6 @@
         <footer class="page-footer">
             <div class="nav-container">
                 <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
-
             <!-- Botão -->
             <a href="/" class="button-container">
               <div
@@ -54,12 +58,11 @@
                 >Cadastrar Empresa</a
               >
               <a href="/login" class="nav-item">Login</a>
-
             </div>
           </div>
         </nav>
       </header>
     </div>
 
-</body>
+ </body>
 </html>
