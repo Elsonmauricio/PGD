@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGD - Página Inicial</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <header>
         <nav class="top-nav">
-            <div class="nav-container">
-                <a href="/cadastrar_desempregado#form-section" class="nav-item">Cadastrar Desempregado</a>
-                <a href="/cadastrar_empresa#form-section" class="nav-item">Cadastrar Empresa</a>
-                <a href="login" class="nav-item">Login</a>
-            </div>
-        </nav>
-    </header>
+          <div class="nav-container">
+            <!-- Imagem do logotipo no canto esquerdo -->
+            <a href="/" class="logo-link">
+              <img
+                src="{{ url_for('static', filename='image/logo.png') }}"
+                alt="Logotipo"
+                class="logo"
+              />
+            </a>
 
-    <div class="page-container">
-        <main class="main-content">
-            <h1>{{ title }}</h1>
-            <p>{{ message }}</p>
-        </main>
-        
-        <footer class="page-footer">
-            <div class="nav-container">
-                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
+            <!-- Botão -->
+            <a href="/" class="button-container">
+              <div
+                class="hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.9167 30H20.4167C19.2658 30 18.3333 29.1392 18.3333 28.0769V21.1538C18.3333 20.3038 17.5875 19.6154 16.6667 19.6154H13.3333C12.4125 19.6154 11.6667 20.3038 11.6667 21.1538V28.0769C11.6667 29.1392 10.7342 30 9.58333 30H2.08333C0.9325 30 0 29.1392 0 28.0769V13.3946C0 11.6262 0.878334 9.95539 2.3825 8.86154L14.2258 0.246923C14.68 -0.0823077 15.32 -0.0823077 15.7733 0.246923L27.6183 8.86154C29.1225 9.95539 30 11.6254 30 13.3931V28.0769C30 29.1392 29.0675 30 27.9167 30Z"
+                    fill="white"
+                  ></path>
+                </svg>
+              </div>
+            </a>
+
+            <div class="nav-links">
+              <a href="/cadastrar_desempregado" class="nav-item"
+                >Cadastrar Desempregado</a
+              >
+              <a href="/cadastrar_empresa" class="nav-item"
+                >Cadastrar Empresa</a
+              >
+              <a href="/login" class="nav-item">Login</a>
             </div>
-        </footer>
+          </div>
+        </nav>
+      </header>
     </div>
-</body>
-</html> 
+  </body>
+</html>
