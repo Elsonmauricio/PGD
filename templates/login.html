@@ -1,47 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
     <title>{{ title }}</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="heading">Sign In</div>
-        
-        <!-- Exibir mensagens flash -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="flash-messages">
-                    {% for category, message in messages %}
-                        <div class="flash-message {{ category }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-        
-        <!-- Formulário de login -->
-        <form id="login-form" action="/login" method="POST" class="form">
-            <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
-            <input required="" class="input" type="password" name="password" id="password" placeholder="Password">
-            <input class="login-button" type="submit" value="Sign In">
-        </form>
+      <div class="heading">Sign In</div>
 
-        <!-- Botão para alternar para criação de conta -->
-        <label for="show-signup" class="create-account-button">Create Account</label>
-        <input type="checkbox" id="show-signup" class="toggle-signup">
+      <!-- Exibir mensagens flash -->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
 
-        <!-- Formulário de criação de conta (inicialmente escondido) -->
-        <form id="signup-form" action="/signup" method="POST" class="form">
-            <input required="" class="input" type="text" name="name" id="name" placeholder="Full Name">
-            <input required="" class="input" type="email" name="signup_email" id="signup_email" placeholder="E-mail">
-            <input required="" class="input" type="password" name="signup_password" id="signup_password" placeholder="Password">
-            <input required="" class="input" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
-            <input class="login-button" type="submit" value="Create Account">
-        </form>
+      <!-- Checkbox para alternar entre os formulários -->
+      <input type="checkbox" id="show-signup" class="toggle-signup" />
+
+      <!-- Formulário de login -->
+      <form id="login-form" action="/login" method="POST" class="form">
+        <input
+          required
+          class="input"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="E-mail"
+        />
+        <input
+          required
+          class="input"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
+        <input class="login-button" type="submit" value="Sign In" />
+      </form>
+
+      <!-- Botão para alternar para criação de conta -->
+      <label for="show-signup" class="create-account-button"
+        >Create Account</label
+      >
+
+      <!-- Formulário de criação de conta -->
+      <form id="signup-form" action="/signup" method="POST" class="form">
+        <input
+          required
+          class="input"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Full Name"
+        />
+        <input
+          required
+          class="input"
+          type="email"
+          name="signup_email"
+          id="signup_email"
+          placeholder="E-mail"
+        />
+        <input
+          required
+          class="input"
+          type="password"
+          name="signup_password"
+          id="signup_password"
+          placeholder="Password"
+        />
+        <input
+          required
+          class="input"
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          placeholder="Confirm Password"
+        />
+        <input class="login-button" type="submit" value="Create Account" />
+      </form>
     </div>
+
 </body>
 </html>
+

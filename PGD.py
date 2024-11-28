@@ -211,6 +211,7 @@ def pesquisar_empresas():
                          empresas=empresas_filtradas,
                          minhas_candidaturas=minhas_candidaturas)
 
+
 @app.route('/area_empresa_candidato/<empresa_id>/<desempregado_id>')
 def area_empresa_candidato(empresa_id, desempregado_id):
     # Encontrar a empresa pelo ID
@@ -246,14 +247,6 @@ def area_empresa_candidato(empresa_id, desempregado_id):
                            message=message_empresa,
                            message_candidato=message_candidato)
 
-# @app.route('/listar_desempregados')
-# def listar_desempregados():
-#     items = [f"{d['nome']} - Habilidades: {', '.join(d['habilidades'])}" for d in desempregados]
-#     return render_template('page.html', title="Lista de Desempregados", items=items)
 
-# @app.route('/listar_empresas')
-# def listar_empresas():
-#     items  [f"{e['nome']} - Vagas: {e['vagas']}" for e in empresas]
-#     return render_template('page.html', title="Lista de Empresas", items=it
 if __name__ == '__main__':
     app.run(debug=True)
