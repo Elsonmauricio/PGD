@@ -12,14 +12,12 @@
             <div class="nav-container">
                 <a href="/cadastrar_desempregado#form-section" class="nav-item">Cadastrar Desempregado</a>
                 <a href="/cadastrar_empresa#form-section" class="nav-item">Cadastrar Empresa</a>
-                <a href="login" class="nav-item">Login</a>
+                <a href="/login" class="nav-item">Login</a>
             </div>
         </nav>
     </header>
-
     <div class="page-container">
-        <main class="main-content">
-            <!-- Seção da Empresa -->
+        <main class="page-container">
             <section class="empresa-section">
                 <h1>Área da Empresa - {{ empresa.nome }}</h1>
                 <p>{{ message }}</p>
@@ -29,38 +27,14 @@
                         <li>{{ candidato.nome }}</li>
                     {% endfor %}
                 </ul>
-                <h2>Todos os Candidatos Disponíveis</h2>
-                <ul>
-                    {% for candidato in todos_candidatos %}
-                        <li>{{ candidato.nome }}</li>
-                    {% endfor %}
-                </ul>
-            </section>
-
-            <!-- Seção do Candidato -->
-            <section class="candidato-section">
-                <h1>Área do Candidato - {{ desempregado.nome }}</h1>
-                <p>{{ message }}</p>
-                <h2>Minhas Candidaturas</h2>
-                <ul>
-                    {% for empresa_nome in minhas_candidaturas %}
-                        <li>{{ empresa_nome }}</li>
-                    {% endfor %}
-                </ul>
-                <h2>Empresas Disponíveis</h2>
-                <ul>
-                    {% for empresa in empresas %}
-                        <li>{{ empresa.nome }}</li>
-                    {% endfor %}
-                </ul>
             </section>
         </main>
-        
-        <footer class="page-footer">
-            <div class="nav-container">
-                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
-            </div>
-        </footer>
+
     </div>
+    <footer class="page-footer">
+        <div class="nav-container">
+            <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html> 

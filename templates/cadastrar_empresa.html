@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Cadastrar Empresa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -19,7 +19,18 @@
 
     <div class="page-container">
         <main class="main-content">
-            <p>{{ message }}</p>
+            <form method="POST" class="form-container">
+                <h1>Cadastrar Empresa</h1>
+                <div class="form-group">
+                    <label for="nome">Nome da Empresa</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="vagas">Descrição das Vagas</label>
+                    <textarea name="vagas" id="vagas" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Cadastrar</button>
+            </form>
         </main>
         
         <footer class="page-footer">
@@ -29,4 +40,4 @@
         </footer>
     </div>
 </body>
-</html>
+</html> 
