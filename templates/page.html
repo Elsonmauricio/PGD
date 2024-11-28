@@ -1,215 +1,33 @@
-{% extends "base.html" %}
-
-{% block title %}{{ title }}{% endblock %}
-
-{% block content %}
-<div class="page-container">
-    <main class="main-content">
-        <!-- Área da Empresa -->
-        {% if empresa %}
-            <div class="content-section">
-                <h1>Área da Empresa - {{ empresa.nome }}</h1>
-
-                <!-- Seção de Pesquisa -->
-                <section class="search-section">
-                    <h2>Pesquisar Candidatos</h2>
-                    <form method="POST" action="{{ url_for('pesquisar_candidatos') }}">
-                        <div class="form-group">
-                            <label for="habilidade">Buscar por habilidade:</label>
-                            <input type="text" name="habilidade" id="habilidade">
-                            <input type="hidden" name="empresa_id" value="{{ empresa.nome }}">
-                            <button type="submit" class="search-btn">Pesquisar</button>
-                        </div>
-                    </form>
-                </section>
-
-                <!-- Candidaturas Recebidas -->
-                <section class="applications-section">
-                    <h2>Candidaturas Recebidas</h2>
-                    {% if candidatos %}
-                        <ul class="candidates-list">
-                        {% for candidato in candidatos %}
-                            <li class="candidate-item">
-                                <h3>{{ candidato.nome }}</h3>
-                                <div class="candidate-details">
-                                    <p><strong>Habilidades:</strong> {{ ', '.join(candidato.habilidades) }}</p>
-                                    <p><strong>Experiência:</strong> {{ candidato.experiencia }}</p>
-                                    <p><strong>Formação:</strong> {{ candidato.formacao }}</p>
-                                    <p><strong>Contato:</strong> {{ candidato.contato }}</p>
-                                    <p><strong>Currículo:</strong> {{ candidato.curriculo }}</p>
-                                </div>
-                                <div class="candidate-actions">
-                                    <button class="contact-btn" onclick="contatarCandidato('{{ candidato.nome }}')">
-                                        Entrar em Contato
-                                    </button>
-                                    <button class="view-cv-btn" onclick="verCurriculo('{{ candidato.nome }}')">
-                                        Ver Currículo Completo
-                                    </button>
-                                </div>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>Nenhuma candidatura recebida ainda.</p>
-                    {% endif %}
-                </section>
-
-                <!-- Todos os Candidatos -->
-                <section class="all-candidates-section">
-                    <h2>Todos os Candidatos Disponíveis</h2>
-                    {% if todos_candidatos %}
-                        <ul class="candidates-list">
-                        {% for candidato in todos_candidatos %}
-                            <li class="candidate-item">
-                                <h3>{{ candidato.nome }}</h3>
-                                <p><strong>Habilidades:</strong> {{ ', '.join(candidato.habilidades) }}</p>
-                                <div class="candidate-preview">
-                                    <button class="view-details-btn" onclick="mostrarDetalhes('{{ candidato.nome }}')">
-                                        Ver Detalhes Completos
-                                    </button>
-                                    <button class="invite-btn" onclick="convidarCandidato('{{ candidato.nome }}')">
-                                        Convidar para Vaga
-                                    </button>
-                                </div>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>Nenhum candidato cadastrado ainda.</p>
-                    {% endif %}
-                </section>
-
-                <!-- Suas Vagas -->
-                <section class="jobs-section">
-                    <h2>Suas Vagas Publicadas</h2>
-                    <div class="job-details">
-                        <p>{{ empresa.vagas }}</p>
-                    </div>
-                </section>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-container">
+                <a href="/cadastrar_desempregado" class="nav-item">Cadastrar Desempregado</a>
+                <a href="/cadastrar_empresa" class="nav-item">Cadastrar Empresa</a>
+                <a href="login" class="nav-item">Login</a>
             </div>
-        {% endif %}
+        </nav>
+    </header>
 
-        <!-- Área do Desempregado -->
-        {% if desempregado %}
-            <div class="content-section">
-                <h1>Área do Candidato - {{ desempregado.nome }}</h1>
-
-                <!-- Seção de Pesquisa de Empresas -->
-                <section class="search-section">
-                    <h2>Pesquisar Empresas</h2>
-                    <form method="POST" action="{{ url_for('pesquisar_empresas') }}">
-                        <div class="form-group">
-                            <label for="vaga">Buscar por vaga:</label>
-                            <input type="text" name="vaga" id="vaga">
-                            <button type="submit">Pesquisar</button>
-                        </div>
-                    </form>
-                </section>
-
-                <!-- Lista de Empresas Disponíveis -->
-                <section class="companies-section">
-                    <h2>Empresas com Vagas</h2>
-                    {% if empresas %}
-                        <ul class="companies-list">
-                        {% for empresa in empresas %}
-                            <li class="company-item">
-                                <h3>{{ empresa.nome }}</h3>
-                                <p>Vagas: {{ empresa.vagas }}</p>
-                                {% if empresa.nome not in minhas_candidaturas %}
-                                    <form method="POST" action="{{ url_for('enviar_candidatura') }}">
-                                        <input type="hidden" name="empresa_id" value="{{ empresa.nome }}">
-                                        <input type="hidden" name="candidato_id" value="{{ desempregado.nome }}">
-                                        <button type="submit" class="apply-button">Candidatar-se</button>
-                                    </form>
-                                {% else %}
-                                    <p class="already-applied">Você já se candidatou</p>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>Nenhuma empresa cadastrada ainda.</p>
-                    {% endif %}
-                </section>
-
-                <!-- Minhas Candidaturas -->
-                <section class="my-applications-section">
-                    <h2>Minhas Candidaturas</h2>
-                    {% if minhas_candidaturas %}
-                        <ul class="applications-list">
-                        {% for empresa_nome in minhas_candidaturas %}
-                            <li class="application-item">{{ empresa_nome }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>Você ainda não se candidatou a nenhuma vaga.</p>
-                    {% endif %}
-                </section>
-
-                <!-- Meu Perfil -->
-                <section class="profile-section">
-                    <h2>Meu Perfil</h2>
-                    <div class="profile-details">
-                        <p>Nome: {{ desempregado.nome }}</p>
-                        <p>Habilidades: {{ ', '.join(desempregado.habilidades) }}</p>
-                    </div>
-                </section>
+    <div class="page-container">
+        <main class="main-content">
+            <h1>{{ title }}</h1>
+            <p>{{ message }}</p>
+        </main>
+        
+        <footer class="page-footer">
+            <div class="nav-container">
+                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
             </div>
-        {% endif %}
-
-        <!-- Seção do formulário -->
-        {% if form %}
-            <div id="form-section" class="content-section">
-                <h2>{{ title }}</h2>
-                <form method="POST" class="form-container">
-                    {% for field in form.fields %}
-                    <div class="form-group">
-                        <label for="{{ field.id }}">{{ field.label }}:</label>
-                        {% if field.type == 'textarea' %}
-                            <textarea 
-                                name="{{ field.name }}" 
-                                id="{{ field.id }}" 
-                                required
-                            ></textarea>
-                        {% else %}
-                            <input 
-                                type="{{ field.type }}" 
-                                name="{{ field.name }}" 
-                                id="{{ field.id }}" 
-                                required
-                            >
-                        {% endif %}
-                    </div>
-                    {% endfor %}
-                    <button type="submit" class="submit-button">
-                        {{ form.button_text }}
-                    </button>
-                </form>
-            </div>
-        {% endif %}
-
-        <!-- Seção da lista -->
-        {% if items %}
-            <div id="list-section" class="content-section">
-                <h2>Lista</h2>
-                <ul class="items-list">
-                    {% for item in items %}
-                    <li class="list-item">{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-
-        <!-- Mensagem de feedback -->
-        {% if message %}
-            <div class="message">
-                <p>{{ message }}</p>
-            </div>
-        {% endif %}
-    </main>
-
-    <footer class="page-footer">
-        <a href="/" class="back-link">Voltar</a>
-    </footer>
-</div>
-{% endblock %}
+        </footer>
+    </div>
+</body>
+</html>
