@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <div class="nav-container">
+                <a href="/cadastrar_desempregado#form-section" class="nav-item">Cadastrar Desempregado</a>
+                <a href="/cadastrar_empresa#form-section" class="nav-item">Cadastrar Empresa</a>
+                <a href="login" class="nav-item">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        <main class="main-content">
+            <h1>{{ title }}</h1>
+            <form method="POST" class="form-container">
+                {% for field in form.fields %}
+                <div class="form-group">
+                    <label for="{{ field.id }}">{{ field.label }}:</label>
+                    {% if field.type == 'textarea' %}
+                        <textarea name="{{ field.name }}" id="{{ field.id }}" required></textarea>
+                    {% else %}
+                        <input type="{{ field.type }}" name="{{ field.name }}" id="{{ field.id }}" required>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="submit-button">{{ form.button_text }}</button>
+            </form>
+        </main>
+        
+        <footer class="page-footer">
+            <div class="nav-container">
+                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 

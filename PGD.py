@@ -210,6 +210,41 @@ def pesquisar_empresas():
                          empresas=empresas_filtradas,
                          minhas_candidaturas=minhas_candidaturas)
 
+@app.route('/area_empresa_candidato/<empresa_id>/<desempregado_id>')
+def area_empresa_candidato(empresa_id, desempregado_id):
+    # Encontrar a empresa pelo ID
+    empresa = next((e for e in empresas if e['nome'] == empresa_id), None)
+    if not empresa:
+        return redirect(url_for('index'))
+    
+    # Encontrar o desempregado pelo ID
+    desempregado = next((d for d in desempregados if d['nome'] == desempregado_id), None)
+    if not desempregado:
+        return redirect(url_for('index'))
+    
+    # Buscar candidaturas para esta empresa
+    candidatos_ids = candidaturas['empresa_candidatos'].get(empresa_id, [])
+    candidatos_interessados = [
+        d for d in desempregados 
+        if d['nome'] in candidatos_ids
+    ]
+    
+    # Buscar todos os candidatos disponíveis
+    todos_candidatos = desempregados
+    
+    # Mensagens para ambas as áreas
+    message_empresa = f"Bem-vindo(a) {empresa['nome']}! Você tem {len(candidatos_interessados)} candidaturas."
+    message_candidato = f"Bem-vindo(a) {desempregado['nome']}! Você tem {len(candidaturas['candidato_empresas'].get(desempregado_id, []))} candidaturas enviadas."
+    
+    return render_template('area_empresa_candidato.html',
+                           empresa=empresa,
+                           candidatos=candidatos_interessados,
+                           todos_candidatos=todos_candidatos,
+                           desempregado=desempregado,
+                           minhas_candidaturas=candidaturas['candidato_empresas'].get(desempregado_id, []),
+                           message=message_empresa,
+                           message_candidato=message_candidato)
+
 # @app.route('/listar_desempregados')
 # def listar_desempregados():
 #     items = [f"{d['nome']} - Habilidades: {', '.join(d['habilidades'])}" for d in desempregados]
