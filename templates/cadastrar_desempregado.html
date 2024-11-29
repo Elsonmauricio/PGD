@@ -10,7 +10,7 @@
     <header>
         <nav class="top-nav">
             <div class="nav-container">
-                            <!-- Botão -->
+           <!-- Botão -->
             <a href="/" class="button-container">
                 <div class="hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
                   <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,6 @@
         </nav>
     </header>
     <div class="page-container">
-        <main class="main-content">
             <h1>Candidato</h1>
             <form method="POST" class="form-container">
                 {% for field in form.fields %}
@@ -40,7 +39,6 @@
                 {% endfor %}
                 <button type="submit" class="submit-button">{{ form.button_text }}</button>
             </form>
-        </main>
     </div>
 </body>
 </html> 
