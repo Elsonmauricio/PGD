@@ -26,7 +26,7 @@ body {
   align-items: center; /* Alinha verticalmente o conteúdo */
   background-color: #0078d4; /* Azul moderno */
   padding: 5px 10px; /* Reduzir o espaçamento interno */
-  height: 40px; /* Definir uma altura menor */
+  height: 50px; /* Definir uma altura menor */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
 }
 /* Container dos links - centraliza o conteúdo */
