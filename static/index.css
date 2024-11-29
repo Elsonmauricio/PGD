@@ -1,23 +1,23 @@
 /* Reset básico para garantir consistência */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 /* Configuração base do corpo da página */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 /* Container principal que envolve todo o conteúdo */
 .page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
 }
 /* Barra de navegação superior */
 .top-nav {
@@ -31,367 +31,377 @@ body {
 }
 /* Container dos links - centraliza o conteúdo */
 .nav-container {
-    display: flex;               /* Ativa flexbox para o container */
-    align-items: center;        /* Garante que os links estejam alinhados na mesma linha */
-    gap: 20px;                  /* Espaço entre os links */
-    max-width: 1200px;          /* Largura máxima do conteúdo */
-    margin: 0 auto;             /* Centraliza horizontalmente */
+  display: flex; /* Ativa flexbox para o container */
+  align-items: center; /* Garante que os links estejam alinhados na mesma linha */
+  gap: 20px; /* Espaço entre os links */
+  max-width: 1200px; /* Largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 /* Estilo dos links */
 .nav-item {
-    color: rgb(255, 255, 255);  /* Texto branco */
-    text-decoration: none;       /* Remove sublinhado */
-    padding: 8px 12px;          /* Espaçamento interno */
-    border-radius: 5px;         /* Bordas arredondadas */
-    transition: all 0.3s;       /* Transição suave */
+  color: rgb(255, 255, 255); /* Texto branco */
+  text-decoration: none; /* Remove sublinhado */
+  padding: 8px 12px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  transition: all 0.3s; /* Transição suave */
 }
 /* Efeito hover nos links */
 .nav-item:hover {
-    background-color: #004999; /* Azul mais escuro no hover */
+  background-color: #004999; /* Azul mais escuro no hover */
 }
 /* Ajuste para o conteúdo principal não ficar sob a navbar */
 .page-container {
-    margin-top: 70px;        /* Espaço para a navbar fixa */
+  margin-top: 70px; /* Espaço para a navbar fixa */
 }
 /* Estilo dos links de navegação */
 .nav-link {
-    padding: 12px 25px;
-    background-color: #0066cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+  padding: 12px 25px;
+  background-color: #0066cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 .nav-link:hover {
-    background-color: #004999;
+  background-color: #004999;
 }
 /* Container principal do conteúdo */
 .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centralização horizontal */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Largura máxima do conteúdo */
+  margin: 0 auto; /* Centralização horizontal */
 }
 /* Seções de conteúdo */
 .content-section {
-    display: none;
-    width: 100%;
-    max-width: 800px; /* Largura máxima da seção */
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin: 20px 0;
+  display: none;
+  width: 100%;
+  max-width: 800px; /* Largura máxima da seção */
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
 /* Regras de visibilidade das seções */
 /* Mostra a primeira seção por padrão */
 :not(:target) ~ .content-section:first-of-type {
-    display: block;
+  display: block;
 }
 /* Mostra a seção alvo quando clicada */
 .content-section:target {
-    display: block !important;
+  display: block !important;
 }
 /* Esconde a primeira seção quando outra é selecionada */
 .content-section:target ~ .content-section:first-of-type {
-    display: none;
+  display: none;
 }
 /* Mantém outras seções escondidas */
 .content-section:not(:target):not(:first-of-type) {
-    display: none !important;
+  display: none !important;
 }
 /* Estilo do formulário */
 .form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
 }
 /* Grupos de campos do formulário */
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 /* Campos de entrada */
 input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
 }
 /* Botão de submit */
 .submit-button {
-    padding: 12px 25px;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    align-self: center;
-    margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: center;
+  margin-top: 20px;
 }
 .submit-button:hover {
-    background-color: #004999;
+  background-color: #004999;
 }
 /* Lista de itens */
 .items-list {
-    list-style: none;
-    width: 100%;
+  list-style: none;
+  width: 100%;
 }
 .list-item {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 }
 .list-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 /* Rodapé da página */
 .page-footer {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    background-color: #f5f5f5;
-    margin-top: auto; /* Empurra o rodapé para baixo */
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: #f5f5f5;
+  margin-top: auto; /* Empurra o rodapé para baixo */
 }
 /* Link de voltar */
 .back-link {
-    color: #0066cc;
-    text-decoration: none;
-    transition: color 0.3s;
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 .back-link:hover {
-    color: #004999;
+  color: #004999;
 }
 /* Mensagens de feedback */
 .message {
-    width: 100%;
-    max-width: 800px;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 5px;
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  text-align: center;
 }
-.form-container, .list-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+.form-container,
+.list-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
 }
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 .candidate-item {
-    border: 1px solid #ddd;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: white;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: white;
 }
 .candidate-details {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 3px;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 3px;
 }
 .candidate-actions {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-.contact-btn, .edit-btn, .view-profile-btn {
-    padding: 8px 15px;
-    margin: 5px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
+.contact-btn,
+.edit-btn,
+.view-profile-btn {
+  padding: 8px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
 }
-.contact-btn:hover, .edit-btn:hover, .view-profile-btn:hover {
-    background-color: #0056b3;
+.contact-btn:hover,
+.edit-btn:hover,
+.view-profile-btn:hover {
+  background-color: #0056b3;
 }
 .jobs-section {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
 }
 .search-section {
-    margin: 20px 0;
-    padding: 15px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
 }
 .search-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 .search-btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 .view-details-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 .view-details-btn:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 /* Estilos gerais */
 .content-section {
-    padding: 20px;
-    margin: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 /* Área da Empresa */
 .candidates-list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 .candidate-item {
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 .candidate-details {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 .candidate-actions {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 /* Área do Desempregado */
 .companies-list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 .company-item {
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 /* Botões */
-.search-btn, .contact-btn, .view-cv-btn, .apply-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 5px;
+.search-btn,
+.contact-btn,
+.view-cv-btn,
+.apply-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
 }
-.search-btn:hover, .contact-btn:hover, .view-cv-btn:hover, .apply-button:hover {
-    background-color: #0056b3;
+.search-btn:hover,
+.contact-btn:hover,
+.view-cv-btn:hover,
+.apply-button:hover {
+  background-color: #0056b3;
 }
 /* Formulários */
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 /* Mensagens */
 .message {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #e3f2fd;
-    border-radius: 4px;
-    border-left: 4px solid #2196f3;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e3f2fd;
+  border-radius: 4px;
+  border-left: 4px solid #2196f3;
 }
 .already-applied {
-    color: #666;
-    font-style: italic;
+  color: #666;
+  font-style: italic;
 }
 /* Seções */
-.search-section, .applications-section, .jobs-section {
-    margin-bottom: 30px;
+.search-section,
+.applications-section,
+.jobs-section {
+  margin-bottom: 30px;
 }
-h1, h2, h3 {
-    color: #333;
+h1,
+h2,
+h3 {
+  color: #333;
 }
 
-/* Barra azul e alinhamento */
+/* Estilo para a barra azul */
 .top-nav {
-  display: flex;
-  justify-content: center; /* Centraliza todos os itens na barra */
-  align-items: center; /* Alinha verticalmente o conteúdo */
-  background-color: #0078d4; /* Azul moderno */
+  background-color: #1e3a8a; /* Azul escuro */
   padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
-}
-
-.nav-container {
   display: flex;
-  align-items: center;
-  width: 100%; /* A barra de navegação ocupa toda a largura */
+  align-items: center; /* Alinha verticalmente os itens */
+  justify-content: space-between; /* Espaça os itens: logotipo à esquerda, links à direita */
 }
 
-/* Logo no canto esquerdo */
+/* Estilo para posicionar a imagem no canto esquerdo */
 .logo-link {
+  margin-right: auto; /* Empurra os outros elementos para a direita */
   display: flex;
-  align-items: center; /* Centraliza a imagem verticalmente */
+  align-items: center; /* Alinha o logotipo verticalmente */
 }
 
 .logo {
-  width: 60px; /* Aumenta o tamanho da imagem */
-  height: auto;
-}
-
-/* Contêiner para os botões de navegação centralizados */
-.nav-links-container {
-  display: flex;
-  justify-content: center; /* Centraliza os links de navegação */
-  gap: 15px; /* Mantém o espaçamento entre os links */
+  width: 50px; /* Mantém o tamanho definido */
+  height: 50px;
+  border-radius: 50%; /* Garante o formato redondo */
+  object-fit: cover; /* Ajusta a imagem sem distorção */
 }
 
 /* Links de navegação */
 .nav-links {
   display: flex;
-  gap: 15px; /* Mantém o espaçamento entre os links */
+  gap: 15px; /* Espaçamento entre os links */
+}
+
+/* Botão flutuante */
+.button-container {
+  margin-left: 20px; /* Mantém o botão afastado da imagem */
 }
 
 .nav-item {
