@@ -52,17 +52,18 @@ def cadastrar_desempregado():
             'contato': contato,
             'curriculo': curriculo
         })
-        return redirect(url_for('index'))  # Redireciona para a página inicial após o cadastro
+        # Usar o nome como ID para redirecionar
+        return redirect(url_for('area_desempregado', desempregado_id=nome))  # Redireciona para a área do desempregado
 
     # Renderiza o formulário
     form = {
         'fields': [
             {'label': 'Nome', 'name': 'nome', 'id': 'nome', 'type': 'text'},
             {'label': 'Habilidades (separadas por vírgula)', 'name': 'habilidades', 'id': 'habilidades', 'type': 'text'},
-            {'label': 'Experiência Profissional', 'name': 'experiencia', 'id': 'experiencia', 'type': 'textarea'},
+            {'label': 'Experiência Profissional', 'name': 'experiencia', 'id': 'experiencia', 'type': 'text'},
             {'label': 'Formação Acadêmica', 'name': 'formacao', 'id': 'formacao', 'type': 'text'},
             {'label': 'Contato (email/telefone)', 'name': 'contato', 'id': 'contato', 'type': 'text'},
-            {'label': 'Currículo (link ou texto)', 'name': 'curriculo', 'id': 'curriculo', 'type': 'textarea'},
+            {'label': 'Currículo (link ou texto)', 'name': 'curriculo', 'id': 'curriculo', 'type': 'text'},
         ],
         'button_text': 'Cadastrar'
     }
@@ -88,7 +89,7 @@ def cadastrar_empresa():
     form = {
         'fields': [
             {'label': 'Nome da Empresa', 'name': 'nome', 'id': 'nome', 'type': 'text'},
-            {'label': 'Descrição das Vagas', 'name': 'vagas', 'id': 'vagas', 'type': 'textarea'},
+            {'label': 'Descrição das Vagas', 'name': 'vagas', 'id': 'vagas', 'type': 'text'},
         ],
         'button_text': 'Cadastrar'
     }
@@ -118,32 +119,6 @@ def area_empresa(empresa_id):
                            desempregado=None,  # Se não houver um desempregado logado, pode ser None
                            minhas_candidaturas=candidaturas['empresa_candidatos'].get(empresa_id, []))
 
-@app.route('/pesquisar_candidatos', methods=['POST'])
-def pesquisar_candidatos():
-    habilidade_busca = request.form.get('habilidade', '').lower()
-    empresa_id = request.form.get('empresa_id')
-    
-    # Encontrar a empresa
-    empresa = next((e for e in empresas if e['nome'] == empresa_id), None)
-    if not empresa:
-        return redirect(url_for('index'))
-    
-    # Filtrar candidatos
-    candidatos_filtrados = [
-        d for d in desempregados 
-        if any(habilidade_busca in h.lower() for h in d['habilidades'])
-    ]
-    
-    # Buscar candidaturas para esta empresa
-    candidaturas_empresa = candidaturas.get(empresa_id, [])
-    
-    return render_template('index.html',
-                         title="Resultado da Pesquisa",
-                         message="Resultados da pesquisa por habilidade",
-                         empresa=empresa,
-                         candidatos=candidatos_filtrados,
-                         todos_candidatos=desempregados)
-
 @app.route('/area_desempregado/<desempregado_id>')
 def area_desempregado(desempregado_id):
     # Encontrar o desempregado pelo ID
@@ -153,13 +128,12 @@ def area_desempregado(desempregado_id):
     
     # Buscar todas as empresas disponíveis
     empresas_disponiveis = empresas
-    
     # Buscar candidaturas deste desempregado
     minhas_candidaturas = candidaturas['candidato_empresas'].get(desempregado_id, [])
     
     message = f"Bem-vindo(a) {desempregado['nome']}! Você tem {len(minhas_candidaturas)} candidaturas enviadas."
     
-    return render_template('indexe.html',
+    return render_template('area_desempregado.html',
                          title="Área do Candidato",
                          message=message,
                          desempregado=desempregado,
@@ -184,32 +158,6 @@ def enviar_candidatura():
         candidaturas['candidato_empresas'][candidato_id].append(empresa_id)
     
     return redirect(url_for('area_desempregado', desempregado_id=candidato_id))
-
-@app.route('/pesquisar_empresas', methods=['POST'])
-def pesquisar_empresas():
-    vaga_busca = request.form.get('vaga', '').lower()
-    desempregado_id = request.form.get('desempregado_id')
-    
-    # Encontrar o desempregado
-    desempregado = next((d for d in desempregados if d['nome'] == desempregado_id), None)
-    
-    # Filtrar empresas
-    empresas_filtradas = [
-        e for e in empresas 
-        if vaga_busca in e['vagas'].lower()
-    ]
-    
-    # Buscar candidaturas do desempregado
-    minhas_candidaturas = [
-        empresa['nome'] for empresa in empresas 
-        if desempregado_id in candidaturas.get(empresa['nome'], [])
-    ]
-    
-    return render_template('index.html',
-                         title="Resultado da Pesquisa",
-                         desempregado=desempregado,
-                         empresas=empresas_filtradas,
-                         minhas_candidaturas=minhas_candidaturas)
 
 
 @app.route('/area_empresa_candidato/<empresa_id>/<desempregado_id>')
@@ -246,7 +194,5 @@ def area_empresa_candidato(empresa_id, desempregado_id):
                            minhas_candidaturas=candidaturas['candidato_empresas'].get(desempregado_id, []),
                            message=message_empresa,
                            message_candidato=message_candidato)
-
-
 if __name__ == '__main__':
     app.run(debug=True)
