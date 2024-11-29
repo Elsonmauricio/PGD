@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Cadastrar Empresa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     <header>
         <nav class="top-nav">
             <div class="nav-container">
-                            <!-- Botão -->
+               <!-- Botão -->
             <a href="/" class="button-container">
                 <div class="hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500">
                   <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,23 +24,28 @@
             </div>
         </nav>
     </header>
+
     <div class="page-container">
         <main class="main-content">
-            <h1>Candidato</h1>
             <form method="POST" class="form-container">
-                {% for field in form.fields %}
+                <h1>Cadastrar Empresa</h1>
                 <div class="form-group">
-                    <label for="{{ field.id }}">{{ field.label }}:</label>
-                    {% if field.type == 'textarea' %}
-                        <textarea name="{{ field.name }}" id="{{ field.id }}" required></textarea>
-                    {% else %}
-                        <input type="{{ field.type }}" name="{{ field.name }}" id="{{ field.id }}" required>
-                    {% endif %}
+                    <label for="nome">Nome da Empresa</label>
+                    <input type="text" name="nome" id="nome" required>
                 </div>
-                {% endfor %}
-                <button type="submit" class="submit-button">{{ form.button_text }}</button>
+                <div class="form-group">
+                    <label for="vagas">Descrição das Vagas</label>
+                    <textarea name="vagas" id="vagas" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Cadastrar</button>
             </form>
         </main>
+        
+        <footer class="page-footer">
+            <div class="nav-container">
+                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html> 

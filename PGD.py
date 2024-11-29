@@ -31,10 +31,11 @@ def login():
     # Se o método for GET (ou seja, a página é acessada inicialmente), renderize o HTML do login
     return render_template('login.html', title="Login")
 
-# Função de cadastro de desempregado (não alterada)
+# Função de cadastro de desempregado (atualizada)
 @app.route('/cadastrar_desempregado', methods=['GET', 'POST'])
 def cadastrar_desempregado():
     if request.method == 'POST':
+        # Lógica para processar o formulário
         nome = request.form['nome']
         habilidades = request.form['habilidades']
         experiencia = request.form['experiencia']
@@ -42,6 +43,7 @@ def cadastrar_desempregado():
         contato = request.form['contato']
         curriculo = request.form['curriculo']
         
+        # Adiciona o desempregado à lista
         desempregados.append({
             'nome': nome,
             'habilidades': habilidades.split(', '),
@@ -50,8 +52,9 @@ def cadastrar_desempregado():
             'contato': contato,
             'curriculo': curriculo
         })
-        return redirect(url_for('area_desempregado', desempregado_id=nome))
-    
+        return redirect(url_for('index'))  # Redireciona para a página inicial após o cadastro
+
+    # Renderiza o formulário
     form = {
         'fields': [
             {'label': 'Nome', 'name': 'nome', 'id': 'nome', 'type': 'text'},
@@ -63,7 +66,7 @@ def cadastrar_desempregado():
         ],
         'button_text': 'Cadastrar'
     }
-    return render_template('page.html', title="Cadastrar Desempregado", form=form)
+    return render_template('cadastrar_desempregado.html', title="Cadastrar Desempregado", form=form)
 
 # Função de cadastro de empresa (não alterada)
 @app.route('/cadastrar_empresa', methods=['GET', 'POST'])
@@ -89,7 +92,7 @@ def cadastrar_empresa():
         ],
         'button_text': 'Cadastrar'
     }
-    return render_template('page.html', title="Cadastrar Empresa", form=form)
+    return render_template('cadastrar_empresa.html', title="Cadastrar Empresa", form=form)
 
 @app.route('/area_empresa/<empresa_id>')
 def area_empresa(empresa_id):
@@ -105,17 +108,15 @@ def area_empresa(empresa_id):
         if d['nome'] in candidatos_ids
     ]
     
-    # Buscar todos os candidatos disponíveis
-    todos_candidatos = desempregados
-    
+    # Mensagem para a área da empresa
     message = f"Bem-vindo(a) {empresa['nome']}! Você tem {len(candidatos_interessados)} candidaturas."
     
-    return render_template('page.html',
-                         title="Área da Empresa",
-                         message=message,
-                         empresa=empresa,
-                         candidatos=candidatos_interessados,
-                         todos_candidatos=todos_candidatos)
+    return render_template('area_empresa_candidato.html',
+                           empresa=empresa,
+                           message=message,
+                           candidatos=candidatos_interessados,
+                           desempregado=None,  # Se não houver um desempregado logado, pode ser None
+                           minhas_candidaturas=candidaturas['empresa_candidatos'].get(empresa_id, []))
 
 @app.route('/pesquisar_candidatos', methods=['POST'])
 def pesquisar_candidatos():
@@ -136,7 +137,7 @@ def pesquisar_candidatos():
     # Buscar candidaturas para esta empresa
     candidaturas_empresa = candidaturas.get(empresa_id, [])
     
-    return render_template('page.html',
+    return render_template('index.html',
                          title="Resultado da Pesquisa",
                          message="Resultados da pesquisa por habilidade",
                          empresa=empresa,
@@ -158,7 +159,7 @@ def area_desempregado(desempregado_id):
     
     message = f"Bem-vindo(a) {desempregado['nome']}! Você tem {len(minhas_candidaturas)} candidaturas enviadas."
     
-    return render_template('page.html',
+    return render_template('indexe.html',
                          title="Área do Candidato",
                          message=message,
                          desempregado=desempregado,
@@ -204,7 +205,7 @@ def pesquisar_empresas():
         if desempregado_id in candidaturas.get(empresa['nome'], [])
     ]
     
-    return render_template('page.html',
+    return render_template('index.html',
                          title="Resultado da Pesquisa",
                          desempregado=desempregado,
                          empresas=empresas_filtradas,
