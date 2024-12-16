@@ -36,8 +36,8 @@ body {
     display: flex;               /* Ativa flexbox para a barra */
     justify-content: center;     /* Centraliza todos os itens na barra */
     align-items: center;         /* Alinha verticalmente o conteúdo */
-    background-color: #0078d4;  /* Azul moderno */
-    padding: 5px 10px;          /* Reduzir o espaçamento interno */
+    background-color: #1e3a8a;  /* Azul escuro */
+    padding: 10px 20px;         /* Adiciona padding */
     height: 50px;                /* Definir uma altura menor */
     width: 100%;                 /* Aumenta a largura da barra para 100% */
     position: fixed;             /* Fixa a barra no topo da página */
@@ -442,13 +442,30 @@ h1, h2, h3 {
 }
 
 @media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column; /* Coloca os itens da navegação verticalmente */
+    padding: 1rem; /* Adiciona padding em telas menores */
+  }
+
   .nav-container {
     flex-direction: column; /* Coloca os itens da navegação verticalmente */
-    align-items: center;
+    align-items: center; /* Centraliza os itens */
   }
 
   .nav-item {
-    font-size: 0.9rem;
-    padding: 10px;
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+    padding: 10px; /* Ajusta o padding */
+  }
+
+  .page-container {
+    padding: 10px; /* Adiciona padding para evitar que o conteúdo fique colado nas bordas */
+  }
+
+  .form-container {
+    padding: 15px; /* Adiciona padding ao formulário */
+  }
+
+  .submit-button {
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
   }
 }
