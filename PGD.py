@@ -1,14 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 
-# Dados temporários para teste
-desempregados = []
-empresas = []
-candidaturas = {
-    'empresa_candidatos': {},  # {empresa_id: [candidato_id, ...]}
-    'candidato_empresas': {}   # {candidato_id: [empresa_id, ...]}
-}
+# Configuração do banco de dados (SQLite usado como exemplo, mas você pode usar MySQL, PostgreSQL, etc.)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  # Configuração do banco de dados
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Inicializa o banco de dados
+db = SQLAlchemy(app)
+
+# Resto do código da aplicação...
 
 # Rota para a página inicial
 @app.route('/')
