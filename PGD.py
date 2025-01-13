@@ -55,17 +55,18 @@ def cadastrar_desempregado():
             'contato': contato,
             'curriculo': curriculo
         })
-        return redirect(url_for('index'))  # Redireciona para a página inicial após o cadastro
+        # Usar o nome como ID para redirecionar
+        return redirect(url_for('area_desempregado', desempregado_id=nome))  # Redireciona para a área do desempregado
 
     # Renderiza o formulário
     form = {
         'fields': [
             {'label': 'Nome', 'name': 'nome', 'id': 'nome', 'type': 'text'},
             {'label': 'Habilidades (separadas por vírgula)', 'name': 'habilidades', 'id': 'habilidades', 'type': 'text'},
-            {'label': 'Experiência Profissional', 'name': 'experiencia', 'id': 'experiencia', 'type': 'textarea'},
+            {'label': 'Experiência Profissional', 'name': 'experiencia', 'id': 'experiencia', 'type': 'text'},
             {'label': 'Formação Acadêmica', 'name': 'formacao', 'id': 'formacao', 'type': 'text'},
             {'label': 'Contato (email/telefone)', 'name': 'contato', 'id': 'contato', 'type': 'text'},
-            {'label': 'Currículo (link ou texto)', 'name': 'curriculo', 'id': 'curriculo', 'type': 'textarea'},
+            {'label': 'Currículo (link ou texto)', 'name': 'curriculo', 'id': 'curriculo', 'type': 'text'},
         ],
         'button_text': 'Cadastrar'
     }
@@ -91,7 +92,7 @@ def cadastrar_empresa():
     form = {
         'fields': [
             {'label': 'Nome da Empresa', 'name': 'nome', 'id': 'nome', 'type': 'text'},
-            {'label': 'Descrição das Vagas', 'name': 'vagas', 'id': 'vagas', 'type': 'textarea'},
+            {'label': 'Descrição das Vagas', 'name': 'vagas', 'id': 'vagas', 'type': 'text'},
         ],
         'button_text': 'Cadastrar'
     }
@@ -135,7 +136,7 @@ def area_desempregado(desempregado_id):
     
     message = f"Bem-vindo(a) {desempregado['nome']}! Você tem {len(minhas_candidaturas)} candidaturas enviadas."
     
-    return render_template('indexe.html',
+    return render_template('area_desempregado.html',
                          title="Área do Candidato",
                          message=message,
                          desempregado=desempregado,

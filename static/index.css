@@ -11,16 +11,29 @@ body {
   background-color: white;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
 }
 /* Container principal que envolve todo o conteúdo */
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: auto; /* Altura automática com base no conteúdo */
   width: 100%;
+  margin-top: 70px  ; /* Espaço para a navbar fixa */
+  max-width: 800px; /* Limita a largura máxima */
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #f9f9f9; /* Cor de fundo */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito de profundidade */
+  transition: box-shadow 0.3s ease; /* Transição suave para a sombra */
 }
+/* Efeito de hover para a página */
+.page-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+  }
 /* Barra de navegação superior */
 .top-nav {
+
   display: flex; /* Ativa flexbox para a barra */
   justify-content: center; /* Centraliza todos os itens na barra */
   align-items: center; /* Alinha verticalmente o conteúdo */
@@ -28,6 +41,20 @@ body {
   padding: 5px 10px; /* Reduzir o espaçamento interno */
   height: 50px; /* Definir uma altura menor */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
+
+    display: flex;               /* Ativa flexbox para a barra */
+    justify-content: center;     /* Centraliza todos os itens na barra */
+    align-items: center;         /* Alinha verticalmente o conteúdo */
+    background-color: #1e3a8a;  /* Azul escuro */
+    padding: 10px 20px;         /* Adiciona padding */
+    height: 50px;                /* Definir uma altura menor */
+    width: 100%;                 /* Aumenta a largura da barra para 100% */
+    position: fixed;             /* Fixa a barra no topo da página */
+    top: 0;                      /* Posiciona a barra no topo */
+    left: 0;                     /* Garante que a barra comece na borda esquerda */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
+    z-index: 1000;              /* Garante que a barra fique acima de outros elementos */
+
 }
 /* Container dos links - centraliza o conteúdo */
 .nav-container {
@@ -48,10 +75,6 @@ body {
 /* Efeito hover nos links */
 .nav-item:hover {
   background-color: #004999; /* Azul mais escuro no hover */
-}
-/* Ajuste para o conteúdo principal não ficar sob a navbar */
-.page-container {
-  margin-top: 70px; /* Espaço para a navbar fixa */
 }
 /* Estilo dos links de navegação */
 .nav-link {
@@ -158,6 +181,9 @@ input {
   text-align: center;
   background-color: #f5f5f5;
   margin-top: auto; /* Empurra o rodapé para baixo */
+  display: flex; /* Ativa flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Alinha verticalmente */
 }
 /* Link de voltar */
 .back-link {
@@ -199,12 +225,13 @@ input {
   border-radius: 4px;
 }
 ul {
-  list-style: none;
+    list-style-type: none; /* Remove os marcadores da lista */
   padding: 0;
 }
 li {
   padding: 10px;
   border-bottom: 1px solid #eee;
+  margin: 10px 0; /* Espaçamento entre os itens da lista */
 }
 .candidate-item {
   border: 1px solid #ddd;
@@ -364,10 +391,10 @@ li {
 .jobs-section {
   margin-bottom: 30px;
 }
-h1,
-h2,
-h3 {
+
+h1, h2, h3 {
   color: #333;
+  text-align: center; /* Centraliza os títulos */
 }
 
 /* Estilo para a barra azul */
@@ -425,13 +452,30 @@ h3 {
 }
 
 @media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column; /* Coloca os itens da navegação verticalmente */
+    padding: 1rem; /* Adiciona padding em telas menores */
+  }
+
   .nav-container {
     flex-direction: column; /* Coloca os itens da navegação verticalmente */
-    align-items: center;
+    align-items: center; /* Centraliza os itens */
   }
 
   .nav-item {
-    font-size: 0.9rem;
-    padding: 10px;
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+    padding: 10px; /* Ajusta o padding */
+  }
+
+  .page-container {
+    padding: 10px; /* Adiciona padding para evitar que o conteúdo fique colado nas bordas */
+  }
+
+  .form-container {
+    padding: 15px; /* Adiciona padding ao formulário */
+  }
+
+  .submit-button {
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
   }
 }

@@ -1,9 +1,10 @@
+<!-- templates/area_desempregado.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Empresa</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
@@ -19,36 +20,44 @@
                   </svg>
                 </div>
               </a>
+  
               <!-- Links de navegação -->
-                <a href="/cadastrar_desempregado" class="nav-item" >Desempregado</a >
+                <a href="/cadastrar_desempregado" class="nav-item" > Desempregado</a >
                 <a href="/cadastrar_empresa" class="nav-item" > Empresa</a>
                 <a href="/login" class="nav-item">Login</a>
               </div>
             </div>
           </nav>
     </header>
-
     <div class="page-container">
         <main class="main-content">
-            <form method="POST" class="form-container">
-                <h1>Cadastrar Empresa</h1>
-                <div class="form-group">
-                    <label for="nome">Nome da Empresa</label>
-                    <input type="text" name="nome" id="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="vagas">Descrição de Empresa</label>
-                    <textarea name="vagas" id="vagas" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">Cadastrar</button>
-            </form>
+            <h1>{{ message }}</h1>
+            <h2>Informações do Desempregado</h2>
+            <p><strong>Nome:</strong> {{ desempregado.nome }}</p>
+            <p><strong>Habilidades:</strong> {{ desempregado.habilidades | join(', ') }}</p>
+            <p><strong>Experiência:</strong> {{ desempregado.experiencia }}</p>
+            <p><strong>Formação:</strong> {{ desempregado.formacao }}</p>
+            <p><strong>Contato:</strong> {{ desempregado.contato }}</p>
+            <p><strong>Currículo:</strong> {{ desempregado.curriculo }}</p>
+
+            <h2>Minhas Candidaturas</h2>
+            <ul>
+                {% for candidatura in minhas_candidaturas %}
+                    <li>{{ candidatura }}</li>
+                {% else %}
+                    <li>Nenhuma candidatura enviada.</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Empresas Disponíveis</h2>
+            <ul>
+                {% for empresa in empresas %}
+                    <li>{{ empresa.nome }}</li>
+                {% else %}
+                    <li>Nenhuma empresa disponível.</li>
+                {% endfor %}
+            </ul>
         </main>
-        
-        <footer class="page-footer">
-            <div class="nav-container">
-                <p>&copy; 2024 PGD - Todos os direitos reservados.</p>
-            </div>
-        </footer>
     </div>
 </body>
-</html> 
+</html>
