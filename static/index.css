@@ -33,6 +33,15 @@ body {
   }
 /* Barra de navegação superior */
 .top-nav {
+
+  display: flex; /* Ativa flexbox para a barra */
+  justify-content: center; /* Centraliza todos os itens na barra */
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  background-color: #0078d4; /* Azul moderno */
+  padding: 5px 10px; /* Reduzir o espaçamento interno */
+  height: 50px; /* Definir uma altura menor */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
+
     display: flex;               /* Ativa flexbox para a barra */
     justify-content: center;     /* Centraliza todos os itens na barra */
     align-items: center;         /* Alinha verticalmente o conteúdo */
@@ -45,6 +54,7 @@ body {
     left: 0;                     /* Garante que a barra comece na borda esquerda */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
     z-index: 1000;              /* Garante que a barra fique acima de outros elementos */
+
 }
 /* Container dos links - centraliza o conteúdo */
 .nav-container {
