@@ -10,18 +10,6 @@
     <title>{{ title }}</title>
   </head>
   <body>
-    <nav class="navbar">
-      <ul class="navbar-list">
-        <li class="navbar-item"><a href="/">Home</a></li>
-        <li class="navbar-item">
-          <a href="/cadastrar_desempregado">Cadastrar Desempregado</a>
-        </li>
-        <li class="navbar-item">
-          <a href="/cadastrar_empresa">Cadastrar Empresa</a>
-        </li>
-        <li class="navbar-item"><a href="/login">Login</a></li>
-      </ul>
-    </nav>
     <div class="container">
       <div class="heading">Sign In</div>
 
@@ -34,9 +22,6 @@
         {% endfor %}
       </div>
       {% endif %} {% endwith %}
-
-      <!-- Checkbox para alternar entre os formulários -->
-      <input type="checkbox" id="show-signup" class="toggle-signup" />
 
       <!-- Formulário de login -->
       <form id="login-form" action="/login" method="POST" class="form">
