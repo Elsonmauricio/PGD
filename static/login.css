@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  max-width: 350px;
+  max-width: 500px; /* Aumente este valor para deixar o quadrado maior */
   background: #f4f5f7;
   background: linear-gradient(
     0deg,
@@ -17,7 +17,7 @@ body {
     rgb(255, 255, 255) 100%
   );
   border-radius: 40px;
-  padding: 40px 40px;
+  padding: 60px 60px; /* Aumente o padding para dar mais espaçamento interno */
   border: 5px solid rgb(255, 255, 255);
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 0px 50px 20px;
   margin: 20px;
@@ -31,7 +31,7 @@ body {
   color: rgb(16, 137, 211);
 }
 
-/* Estilos do formulário */
+/* Ajustes adicionais para o formulário e os campos de entrada */
 .form {
   margin-top: 20px;
 }
