@@ -1,0 +1,105 @@
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.profile-container {
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+.profile-photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #4285f4;
+}
+
+.profile-info {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.user-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0 0;
+}
+
+/* Botão do perfil com fundo branco */
+.edit-button {
+  background-color: white; /* Fundo branco */
+  color: #4285f4; /* Texto azul para contraste */
+  border: 2px solid #e9eaec; /* Borda azul */
+  padding: 15px 30px; /* Tamanho ajustado */
+  font-size: 16px; /* Texto maior */
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.edit-button:hover {
+  background-color: #f3f5f8; /* Fundo azul ao passar o mouse */
+  color: white; /* Texto branco no hover */
+}
+
+/* Details Section */
+.profile-details {
+  margin-top: 20px;
+}
+
+.profile-details h2 {
+  font-size: 18px;
+  color: #333;
+  border-bottom: 2px solid #4285f4;
+  display: inline-block;
+  margin: 20px 0 10px;
+}
+
+.profile-details p {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.profile-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-details li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.profile-details li strong {
+  color: #4285f4;
+}

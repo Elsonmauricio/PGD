@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='register.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="heading">Register</div>
+
+        <!-- Formulário de criação de conta -->
+        <form id="register-form" action="/register" method="POST" class="form">
+          <input
+            required
+            class="input"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Full Name"
+          />
+          <input
+            required
+            class="input"
+            type="email"
+            name="signup_email"
+            id="signup_email"
+            placeholder="E-mail"
+          />
+          <input
+            required
+            class="input"
+            type="password"
+            name="signup_password"
+            id="signup_password"
+            placeholder="Password"
+          />
+          <input
+            required
+            class="input"
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            placeholder="Confirm Password"
+          />
+          <input class="register-button" type="submit" value="Create Account" />
+        </form>
+      </div>
+    </main>
+  </body>
+  {% endblock %}
+</html>
