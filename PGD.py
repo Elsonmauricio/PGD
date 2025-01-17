@@ -34,6 +34,32 @@ def login():
     # Se o método for GET (ou seja, a página é acessada inicialmente), renderize o HTML do login
     return render_template('login.html', title="Login")
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Obtenha os dados do formulário
+        name = request.form['name']
+        email = request.form['signup_email']
+        password = request.form['signup_password']
+        confirm_password = request.form['confirm_password']
+
+        # Validação simples (exemplo)
+        if password != confirm_password:
+            return render_template('regiter.html', title="register ", error="Passwords do not match.")
+        
+        # Lógica para salvar os dados no banco de dados
+        # Exemplo:
+        # novo_usuario = Usuario(nome=name, email=email, senha=password)
+        # db.session.add(novo_usuario)
+        # db.session.commit()
+
+        # Redirecionar após o cadastro
+        return redirect(url_for('login'))
+
+    # Renderiza o formulário caso seja um método GET
+    return render_template('register.html', title="register")
+
+
 # Função de cadastro de desempregado (atualizada)
 @app.route('/cadastrar_desempregado', methods=['GET', 'POST'])
 def cadastrar_desempregado():
