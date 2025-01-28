@@ -1,22 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-import os
 
-app = Flask(__name__)
-
-# Configuração do banco de dados (SQLite usado como exemplo, mas você pode usar MySQL, PostgreSQL, etc.)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  # Configuração do banco de dados
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Inicializa o banco de dados
-db = SQLAlchemy(app)
-
-# Resto do código da aplicação...
+app = Flask(__name__)  # Criação da instância do Flask
 
 # Rota para a página inicial
 @app.route('/')
 def index():
     return render_template('index.html', title="Página Inicial", message="Bem-vindo ao PGD!")
+
+# Dados simulados
+clientes = {
+    1: {"nome": "João Silva", "email": "joao@email.com", "data_criacao": "2025-01-01"},
+    2: {"nome": "Maria Oliveira", "email": "maria@email.com", "data_criacao": "2025-01-10"}
+}
+
+@app.route('/profile')
+def profile():
+    # Substitua pelos dados reais do usuário
+    
+    return render_template('profile.html')
 
 # Rota para a página de login
 @app.route('/login', methods=['GET', 'POST'])
@@ -26,10 +27,12 @@ def login():
         password = request.form['password']
         
         # Lógica de validação do login (pode ser implementada conforme necessário)
-        # Se o login for bem-sucedido, você pode redirecionar o usuário para outra página
-        # Exemplo: return redirect(url_for('index'))
-        
-        return redirect(url_for('index'))  # Redirecionando para a página inicial após o login
+        # Exemplo de verificação no banco de dados
+        usuario = Usuario.query.filter_by(email=email).first()
+        if usuario and usuario.password == password:
+            return redirect(url_for('index'))  # Redirecionando para a página inicial após o login
+        else:
+            return render_template('login.html', title="Login", error="Email ou senha inválidos")
 
     # Se o método for GET (ou seja, a página é acessada inicialmente), renderize o HTML do login
     return render_template('login.html', title="Login")
@@ -45,20 +48,18 @@ def register():
 
         # Validação simples (exemplo)
         if password != confirm_password:
-            return render_template('regiter.html', title="register ", error="Passwords do not match.")
+            return render_template('register.html', title="Register", error="Passwords do not match.")
         
-        # Lógica para salvar os dados no banco de dados
-        # Exemplo:
-        # novo_usuario = Usuario(nome=name, email=email, senha=password)
-        # db.session.add(novo_usuario)
-        # db.session.commit()
+        # Salvar os dados no banco de dados
+        novo_usuario = Usuario(name=name, email=email, password=password)
+        db.session.add(novo_usuario)
+        db.session.commit()
 
         # Redirecionar após o cadastro
         return redirect(url_for('login'))
 
     # Renderiza o formulário caso seja um método GET
-    return render_template('register.html', title="register")
-
+    return render_template('register.html', title="Register")
 
 # Função de cadastro de desempregado (atualizada)
 @app.route('/cadastrar_desempregado', methods=['GET', 'POST'])
@@ -124,104 +125,7 @@ def cadastrar_empresa():
     }
     return render_template('cadastrar_empresa.html', title="Cadastrar Empresa", form=form)
 
-@app.route('/area_empresa/<empresa_id>')
-def area_empresa(empresa_id):
-    # Encontrar a empresa pelo ID
-    empresa = next((e for e in empresas if e['nome'] == empresa_id), None)
-    if not empresa:
-        return redirect(url_for('index'))
-    
-    # Buscar candidaturas para esta empresa
-    candidatos_ids = candidaturas['empresa_candidatos'].get(empresa_id, [])
-    candidatos_interessados = [
-        d for d in desempregados 
-        if d['nome'] in candidatos_ids
-    ]
-    
-    # Mensagem para a área da empresa
-    message = f"Bem-vindo(a) {empresa['nome']}! Você tem {len(candidatos_interessados)} candidaturas."
-    
-    return render_template('area_empresa_candidato.html',
-                           empresa=empresa,
-                           message=message,
-                           candidatos=candidatos_interessados,
-                           desempregado=None,  # Se não houver um desempregado logado, pode ser None
-                           minhas_candidaturas=candidaturas['empresa_candidatos'].get(empresa_id, []))
+# Outras rotas e funções continuam as mesmas...
 
-@app.route('/area_desempregado/<desempregado_id>')
-def area_desempregado(desempregado_id):
-    # Encontrar o desempregado pelo ID
-    desempregado = next((d for d in desempregados if d['nome'] == desempregado_id), None)
-    if not desempregado:
-        return redirect(url_for('index'))
-    
-    # Buscar todas as empresas disponíveis
-    empresas_disponiveis = empresas
-    # Buscar candidaturas deste desempregado
-    minhas_candidaturas = candidaturas['candidato_empresas'].get(desempregado_id, [])
-    
-    message = f"Bem-vindo(a) {desempregado['nome']}! Você tem {len(minhas_candidaturas)} candidaturas enviadas."
-    
-    return render_template('area_desempregado.html',
-                         title="Área do Candidato",
-                         message=message,
-                         desempregado=desempregado,
-                         empresas=empresas_disponiveis,
-                         minhas_candidaturas=minhas_candidaturas)
-
-@app.route('/enviar_candidatura', methods=['POST'])
-def enviar_candidatura():
-    empresa_id = request.form.get('empresa_id')
-    candidato_id = request.form.get('candidato_id')
-    
-    # Registrar candidatura para a empresa
-    if empresa_id not in candidaturas['empresa_candidatos']:
-        candidaturas['empresa_candidatos'][empresa_id] = []
-    if candidato_id not in candidaturas['empresa_candidatos'][empresa_id]:
-        candidaturas['empresa_candidatos'][empresa_id].append(candidato_id)
-    
-    # Registrar candidatura para o candidato
-    if candidato_id not in candidaturas['candidato_empresas']:
-        candidaturas['candidato_empresas'][candidato_id] = []
-    if empresa_id not in candidaturas['candidato_empresas'][candidato_id]:
-        candidaturas['candidato_empresas'][candidato_id].append(empresa_id)
-    
-    return redirect(url_for('area_desempregado', desempregado_id=candidato_id))
-
-
-@app.route('/area_empresa_candidato/<empresa_id>/<desempregado_id>')
-def area_empresa_candidato(empresa_id, desempregado_id):
-    # Encontrar a empresa pelo ID
-    empresa = next((e for e in empresas if e['nome'] == empresa_id), None)
-    if not empresa:
-        return redirect(url_for('index'))
-    
-    # Encontrar o desempregado pelo ID
-    desempregado = next((d for d in desempregados if d['nome'] == desempregado_id), None)
-    if not desempregado:
-        return redirect(url_for('index'))
-    
-    # Buscar candidaturas para esta empresa
-    candidatos_ids = candidaturas['empresa_candidatos'].get(empresa_id, [])
-    candidatos_interessados = [
-        d for d in desempregados 
-        if d['nome'] in candidatos_ids
-    ]
-    
-    # Buscar todos os candidatos disponíveis
-    todos_candidatos = desempregados
-    
-    # Mensagens para ambas as áreas
-    message_empresa = f"Bem-vindo(a) {empresa['nome']}! Você tem {len(candidatos_interessados)} candidaturas."
-    message_candidato = f"Bem-vindo(a) {desempregado['nome']}! Você tem {len(candidaturas['candidato_empresas'].get(desempregado_id, []))} candidaturas enviadas."
-    
-    return render_template('area_empresa_candidato.html',
-                           empresa=empresa,
-                           candidatos=candidatos_interessados,
-                           todos_candidatos=todos_candidatos,
-                           desempregado=desempregado,
-                           minhas_candidaturas=candidaturas['candidato_empresas'].get(desempregado_id, []),
-                           message=message_empresa,
-                           message_candidato=message_candidato)
 if __name__ == '__main__':
     app.run(debug=True)

@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   height: auto; /* Altura automática com base no conteúdo */
   width: 100%;
-  margin-top: 70px  ; /* Espaço para a navbar fixa */
+  margin-top: 70px; /* Espaço para a navbar fixa */
   max-width: 800px; /* Limita a largura máxima */
   padding: 10px;
   border-radius: 12px;
@@ -29,11 +29,10 @@ body {
 }
 /* Efeito de hover para a página */
 .page-container:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
-  }
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+}
 /* Barra de navegação superior */
 .top-nav {
-
   display: flex; /* Ativa flexbox para a barra */
   justify-content: center; /* Centraliza todos os itens na barra */
   align-items: center; /* Alinha verticalmente o conteúdo */
@@ -42,19 +41,18 @@ body {
   height: 50px; /* Definir uma altura menor */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
 
-    display: flex;               /* Ativa flexbox para a barra */
-    justify-content: center;     /* Centraliza todos os itens na barra */
-    align-items: center;         /* Alinha verticalmente o conteúdo */
-    background-color: #1e3a8a;  /* Azul escuro */
-    padding: 10px 20px;         /* Adiciona padding */
-    height: 50px;                /* Definir uma altura menor */
-    width: 100%;                 /* Aumenta a largura da barra para 100% */
-    position: fixed;             /* Fixa a barra no topo da página */
-    top: 0;                      /* Posiciona a barra no topo */
-    left: 0;                     /* Garante que a barra comece na borda esquerda */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
-    z-index: 1000;              /* Garante que a barra fique acima de outros elementos */
-
+  display: flex; /* Ativa flexbox para a barra */
+  justify-content: center; /* Centraliza todos os itens na barra */
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  background-color: #1e3a8a; /* Azul escuro */
+  padding: 10px 20px; /* Adiciona padding */
+  height: 50px; /* Definir uma altura menor */
+  width: 100%; /* Aumenta a largura da barra para 100% */
+  position: fixed; /* Fixa a barra no topo da página */
+  top: 0; /* Posiciona a barra no topo */
+  left: 0; /* Garante que a barra comece na borda esquerda */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para o efeito */
+  z-index: 1000; /* Garante que a barra fique acima de outros elementos */
 }
 /* Container dos links - centraliza o conteúdo */
 .nav-container {
@@ -225,7 +223,7 @@ input {
   border-radius: 4px;
 }
 ul {
-    list-style-type: none; /* Remove os marcadores da lista */
+  list-style-type: none; /* Remove os marcadores da lista */
   padding: 0;
 }
 li {
@@ -392,7 +390,9 @@ li {
   margin-bottom: 30px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: #333;
   text-align: center; /* Centraliza os títulos */
 }
@@ -403,21 +403,6 @@ h1, h2, h3 {
   padding: 10px 20px;
   display: flex;
   align-items: center; /* Alinha verticalmente os itens */
-  justify-content: space-between; /* Espaça os itens: logotipo à esquerda, links à direita */
-}
-
-/* Estilo para posicionar a imagem no canto esquerdo */
-.logo-link {
-  margin-right: auto; /* Empurra os outros elementos para a direita */
-  display: flex;
-  align-items: center; /* Alinha o logotipo verticalmente */
-}
-
-.logo {
-  width: 50px; /* Mantém o tamanho definido */
-  height: 50px;
-  border-radius: 50%; /* Garante o formato redondo */
-  object-fit: cover; /* Ajusta a imagem sem distorção */
 }
 
 /* Links de navegação */

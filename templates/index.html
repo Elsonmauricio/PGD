@@ -10,38 +10,44 @@
     />
   </head>
   <body>
-    
-      <header >
-        <nav class="top-nav">
-
-          <div class="nav-container">
-          <div class="nav-container flex justify-between items-center">
-
-            <!-- Botão -->
-           <div class="nav-links">
+    <header>
+      <nav class="top-nav">
+        <div class="nav-container flex justify-between items-center">
+          <!-- Botão com SVG -->
+          <div class="nav-links">
             <a href="/" class="nav-item">
-              <div class="hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" >
-                I<svg  width="20"  height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                 <path d="M27.9167 30H20.4167C19.2658 30 18.3333 29.1392 18.3333 28.0769V21.1538C18.3333 20.3038 17.5875 19.6154 16.6667 19.6154H13.3333C12.4125 19.6154 11.6667 20.3038 11.6667 21.1538V28.0769C11.6667 29.1392 10.7342 30 9.58333 30H2.08333C0.9325 30 0 29.1392 0 28.0769V13.3946C0 11.6262 0.878334 9.95539 2.3825 8.86154L14.2258 0.246923C14.68 -0.0823077 15.32 -0.0823077 15.7733 0.246923L27.6183 8.86154C29.1225 9.95539 30 11.6254 30 13.3931V28.0769C30 29.1392 29.0675 30 27.9167 30Z" fill="white"></path></svg>
-              </div></a>
-
-            <!-- Links de navegação -->
-              <a href="/cadastrar_desempregado" class="nav-item" > Desempregado</a >
-              <a href="/cadastrar_empresa" class="nav-item" > Empresa</a>
-              <a href="/login" class="nav-item">Login</a>
-              <a href="/register" class="nav-item">register</a>
-            </div>
-             <!-- Botão de Perfil -->
+              <div
+                class="hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.9167 30H20.4167C19.2658 30 18.3333 29.1392 18.3333 28.0769V21.1538C18.3333 20.3038 17.5875 19.6154 16.6667 19.6154H13.3333C12.4125 19.6154 11.6667 20.3038 11.6667 21.1538V28.0769C11.6667 29.1392 10.7342 30 9.58333 30H2.08333C0.9325 30 0 29.1392 0 28.0769V13.3946C0 11.6262 0.878334 9.95539 2.3825 8.86154L14.2258 0.246923C14.68 -0.0823077 15.32 -0.0823077 15.7733 0.246923L27.6183 8.86154C29.1225 9.95539 30 11.6254 30 13.3931V28.0769C30 29.1392 29.0675 30 27.9167 30Z"
+                    fill="white"
+                  ></path>
+                </svg>
+              </div>
+            </a>
+            <!-- Links de Navegação -->
+            <a href="/cadastrar_desempregado" class="nav-item">Desempregado</a>
+            <a href="/cadastrar_empresa" class="nav-item">Empresa</a>
+            <a href="/login" class="nav-item">Login</a>
+            <a href="/register" class="nav-item">Register</a>
+          </div>
+          <!-- Botão de Perfil -->
           <div class="button-container">
-            <a href="/profile" class="button" aria-label="Perfil">
+            <a href="profile.html" class="nav-item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="1em"
+                width="9em"
                 height="1em"
                 viewBox="0 0 24 24"
-                stroke-width="0"
                 fill="currentColor"
-                stroke="currentColor"
                 class="icon"
               >
                 <path
@@ -50,15 +56,13 @@
               </svg>
             </a>
           </div>
-          </div>
-        </nav>
-      </header>
-
-      <main class="main-content">
-       <div class="page-container">
-        <h3><p>{{ message }}</p></h3>
-       </div>
-      </main>
-    
+        </div>
+      </nav>
+    </header>
+    <main class="main-content">
+      <div class="page-container">
+        <h3>{{ message }}</h3>
+      </div>
+    </main>
   </body>
 </html>
