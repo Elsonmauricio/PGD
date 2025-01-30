@@ -35,6 +35,11 @@
           />
           <input class="login-button" type="submit" value="Sign In" />
         </form>
+
+        <!-- Exibe mensagem de erro se houver -->
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
       </div>
     </main>
   </body>
